@@ -18,8 +18,3 @@ from django.urls import path, include
 
 from api.views import hello_api
 
-urlpatterns = [
-    path('', hello_api),
-    path('api/hello', hello_api),
-    path('api/product/', include('product.urls')),
-]
