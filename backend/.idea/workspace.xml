@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e00a79f-9c9a-487b-9364-af3dcff4eaed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/data/product.csv" beforeDir="false" afterPath="$PROJECT_DIR$/product/data/product.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/models_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/models_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +67,7 @@
       <workItem from="1636451736237" duration="1395000" />
       <workItem from="1636508847315" duration="14562000" />
       <workItem from="1636529290351" duration="8878000" />
-      <workItem from="1636606666553" duration="5508000" />
+      <workItem from="1636606666553" duration="10068000" />
     </task>
     <servers />
   </component>

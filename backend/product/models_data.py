@@ -16,13 +16,9 @@ class DbUploader():
         self.csvfile = reader.new_file(vo)
 
     def insert_data(self):
-        print('############ 2 ##########')
         self.insert_vendor()
-        print('############ 3 ##########')
         self.insert_category()
-        print('############ 4 ##########')
         self.insert_product()
-        print('############ OK ##########')
 
     def insert_vendor(self):
         with open(self.csvfile, newline='', encoding='utf8') as f:
@@ -30,7 +26,6 @@ class DbUploader():
             for row in data_reader:
                 if not Vendor.objects.filter(name=row['vendor']).exists():
                     vendor = Vendor.objects.create(name=row['vendor'])
-                    print(f' 1 >>>> {vendor}')
         print('VENDOR DATA UPLOADED SUCCESSFULY!')
 
     def insert_category(self):
@@ -39,7 +34,6 @@ class DbUploader():
             for row in data_reader:
                 if not Category.objects.filter(name=row['category']).exists():
                     category = Category.objects.create(name=row['category'])
-                    print(f' 2 >>>> {category}')
         print('CATEGORY DATA UPLOADED SUCCESSFULY!')
 
     def insert_product(self):
@@ -48,13 +42,9 @@ class DbUploader():
             for row in data_reader:
                 v = Vendor()
                 vendor = Vendor.objects.all().filter(name=row['vendor']).values()[0]
-                print(f'vendor::: {vendor}')
-                print(f'vendor::: {vendor["id"]}')
                 v.id = vendor['id']
                 c = Category()
                 category = Category.objects.all().filter(name=row['category']).values()[0]
-                print(f'category::: {category}')
-                print(f'category id::: {category["id"]}')
                 c.id = category['id']
                 Product.objects.create(name=row['product'] ,
                                        price=row['price'],
