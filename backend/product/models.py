@@ -13,13 +13,8 @@ class Vendor(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField(blank=True)
 
     class Meta:
-        ordering = ('name',)
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
         db_table = 'categories'
 
     def __str__(self):
@@ -31,7 +26,6 @@ class Product(models.Model):
         ('W', "Korean Won (W)"),
     ]
     name = models.CharField(max_length=250, unique=True)
-    slug = models.SlugField(max_length=250, unique=True)
     description = models.TextField(blank=True)
     currency = models.CharField(max_length=5, choices=currencies, default="$")
     price = models.DecimalField(max_digits=10, decimal_places=2)

@@ -22,36 +22,44 @@ class DbUploader():
         self.insert_category()
         print('############ 4 ##########')
         self.insert_product()
+        print('############ OK ##########')
 
     def insert_vendor(self):
-        with open(self.csvfile, newline='', encoding='utf8') as csvfile:
-            data_reader = csv.DictReader(csvfile)
+        with open(self.csvfile, newline='', encoding='utf8') as f:
+            data_reader = csv.DictReader(f)
             for row in data_reader:
                 if not Vendor.objects.filter(name=row['vendor']).exists():
                     vendor = Vendor.objects.create(name=row['vendor'])
+                    print(f' 1 >>>> {vendor}')
         print('VENDOR DATA UPLOADED SUCCESSFULY!')
 
     def insert_category(self):
-        with open(self.csvfile, newline='', encoding='utf8') as csvfile:
-            data_reader = csv.DictReader(csvfile)
+        with open(self.csvfile, newline='', encoding='utf8') as f:
+            data_reader = csv.DictReader(f)
             for row in data_reader:
                 if not Category.objects.filter(name=row['category']).exists():
-                    category_id = Category.objects.create(name=row['category'])
-                    print(f' 2 >>>> {category_id}')
+                    category = Category.objects.create(name=row['category'])
+                    print(f' 2 >>>> {category}')
         print('CATEGORY DATA UPLOADED SUCCESSFULY!')
 
     def insert_product(self):
         with open(self.csvfile, newline='', encoding='utf8') as csvfile:
             data_reader = csv.DictReader(csvfile)
             for row in data_reader:
-                category_id = Category.objects.get(id=row['category'])
-                products = row['product'].split(',')
-
-                if not Product.objects.filter(name=row['product'],
-                                              category=category_id).exists():
-                    Product.objects.create(name=row['product'] if row['product'] else category_id.name,
-                                           price=row['price'],
-                                           category=category_id, )
+                v = Vendor()
+                vendor = Vendor.objects.all().filter(name=row['vendor']).values()[0]
+                print(f'vendor::: {vendor}')
+                print(f'vendor::: {vendor["id"]}')
+                v.id = vendor['id']
+                c = Category()
+                category = Category.objects.all().filter(name=row['category']).values()[0]
+                print(f'category::: {category}')
+                print(f'category id::: {category["id"]}')
+                c.id = category['id']
+                Product.objects.create(name=row['product'] ,
+                                       price=row['price'],
+                                       category=c,
+                                       vendor=v)
             print('PRODUCT DATA UPLOADED SUCCESSFULY!')
 
 
