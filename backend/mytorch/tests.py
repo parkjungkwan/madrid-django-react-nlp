@@ -2,7 +2,8 @@ import torch
 import urllib.request
 import pandas as pd
 from torchtext import data # torchtext.data 임포트
-from eunjeon import Mecab
+from konlpy.tag import Mecab
+import torch.nn as nn
 
 class KoreanTorch:
     def __init__(self):
@@ -80,11 +81,78 @@ class KoreanTorch:
         '''
 
 
+class EnglishTorch:
+    def __init__(self):
+        pass
 
+    def execute(self):
+        train_data = 'you need to know how to code'
+        word_set = set(train_data.split())  # 중복을 제거한 단어들의 집합인 단어 집합 생성.
+        vocab = {word: i + 2 for i, word in enumerate(word_set)}  # 단어 집합의 각 단어에 고유한 정수 맵핑.
+        vocab['<unk>'] = 0
+        vocab['<pad>'] = 1
+        print(vocab)
+
+        # 단어 집합의 크기만큼의 행을 가지는 테이블 생성.
+        embedding_table = torch.FloatTensor([
+            [0.0, 0.0, 0.0],
+            [0.0, 0.0, 0.0],
+            [0.2, 0.9, 0.3],
+            [0.1, 0.5, 0.7],
+            [0.2, 0.1, 0.8],
+            [0.4, 0.1, 0.1],
+            [0.1, 0.8, 0.9],
+            [0.6, 0.1, 0.1]])
+
+        # 임의의 샘플 문장
+        sample = 'you need to run'.split()
+        idxes = []
+        # 각 단어를 정수로 변환
+        for word in sample:
+            try:
+                idxes.append(vocab[word])
+            except KeyError:  # 단어 집합에 없는 단어일 경우 <unk>로 대체된다.
+                idxes.append(vocab['<unk>'])
+        idxes = torch.LongTensor(idxes)
+
+        # 룩업 테이블
+        lookup_result = embedding_table[idxes, :]  # 각 정수를 인덱스로 임베딩 테이블에서 값을 가져온다.
+        print(lookup_result)
+        '''
+        결과: tensor([[0.1000, 0.5000, 0.7000],
+                [0.1000, 0.8000, 0.9000],
+                [0.4000, 0.1000, 0.1000],
+                [0.0000, 0.0000, 0.0000]])'''
+
+        # 2. 임베딩 층 사용하기
+
+        train_data = 'you need to know how to code'
+        word_set = set(train_data.split())  # 중복을 제거한 단어들의 집합인 단어 집합 생성.
+        vocab = {tkn: i + 2 for i, tkn in enumerate(word_set)}  # 단어 집합의 각 단어에 고유한 정수 맵핑.
+        vocab['<unk>'] = 0
+        vocab['<pad>'] = 1
+
+        embedding_layer = nn.Embedding(num_embeddings=len(vocab),
+                                       embedding_dim=3,
+                                       padding_idx=1)
+        print(embedding_layer.weight)
+        '''
+        Parameter containing:
+            tensor([[-0.1778, -1.9974, -1.2478],
+                    [ 0.0000,  0.0000,  0.0000],
+                    [ 1.0921,  0.0416, -0.7896],
+                    [ 0.0960, -0.6029,  0.3721],
+                    [ 0.2780, -0.4300, -1.9770],
+                    [ 0.0727,  0.5782, -3.2617],
+                    [-0.0173, -0.7092,  0.9121],
+                    [-0.4817, -1.1222,  2.2774]], requires_grad=True)
+        '''
 
 
 if __name__ == '__main__':
-
+    # https://wikidocs.net/64904
     print(f'Result: {torch.cuda.is_available()}')
-    k = KoreanTorch()
-    k.my_mecab()
+    # k = KoreanTorch()
+    # k.my_mecab()
+    e = EnglishTorch()
+    e.execute()
