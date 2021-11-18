@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e00a79f-9c9a-487b-9364-af3dcff4eaed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/kogpt.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kogpt/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kogpt/KoGPT2-chatbot/my_opencv.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatbot/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mytorch/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/mytorch/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +206,7 @@
       <workItem from="1636777299526" duration="2026000" />
       <workItem from="1636779775836" duration="657000" />
       <workItem from="1636780478527" duration="20288000" />
-      <workItem from="1637040616365" duration="5733000" />
+      <workItem from="1637040616365" duration="6327000" />
     </task>
     <servers />
   </component>
